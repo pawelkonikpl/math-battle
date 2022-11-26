@@ -1,19 +1,19 @@
 <template>
   <ClientOnly>
-    <v-row class="action-field align-center justify-center text-center bg-amber-accent-2 rounded mb-6">
-      <v-col cols="2">
+    <v-row class="action-field text-center align-center justify-center d-flex bg-amber-accent-2 rounded mb-6">
+      <v-col cols="3">
         <span class="text-h2">{{ aParam }}</span>
       </v-col>
       <v-col cols="1">
         <span class="text-h2">{{ props.operator }}</span>
       </v-col>
-      <v-col cols="2">
+      <v-col cols="3">
         <span class="text-h2">{{ bParam }}</span>
       </v-col>
       <v-col cols="1">
         <span class="text-h2">=</span>
       </v-col>
-      <v-col cols="2">
+      <v-col cols="3">
         <TextField
           v-model="model"
         />

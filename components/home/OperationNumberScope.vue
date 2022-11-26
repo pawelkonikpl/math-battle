@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-text-field
-      label="Wybierz zakres"
+      :label="$t('HOME.SELECT_RANGE')"
       type="number"
       v-model="value"
       @change="handelChange"

@@ -2,6 +2,8 @@
   "VERIFY": "Sprawdź",
   "HOME": {
     "SELECT_OPERATIONS": "Wybierz operacje",
+    "SELECT_RANGE": "Wybierz zakres"
+
   },
   "DEFAULT": {
     "HEADER": {

@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-$body-font-family: 'Patrick Hand', cursive !important;
+$font-family: 'Patrick Hand';
+$body-font-family: $font-family;
+$title-font: $font-family;
+$text-font: $font-family;
+
+
+@for $i from 1 through 30 {
+  .fs-#{$i} {
+    font-size: $i*0.5+rem !important;
+  }
+}
+
 
 :root {
-  --color-text: #1c1c1c;
+  --color-text: rgb(79, 79, 79);
   --color-background: #08a3b7;
 }
 
@@ -16,7 +27,7 @@ $body-font-family: 'Patrick Hand', cursive !important;
 }
 
 html {
-  font-family: $body-font-family !important;
+  font-family: $font-family;
 }
 
 body {
@@ -24,9 +35,12 @@ body {
   color: var(--color-text);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: $body-font-family !important;
-  font-size: 15px;
+  font-family: $font-family;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.text-h2 {
+  font-family: $font-family !important;
 }

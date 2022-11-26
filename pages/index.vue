@@ -1,11 +1,10 @@
 <template>
-  <v-container>
-    <v-row class="ml-auto">
+    <v-row class="ml-auto ma-0 pa-0">
       <Counter />
     </v-row>
     <v-row class="mt-5">
-      <SelectedOperators />
-      <OperationNumberScope @numberChange="handleNumberChange"/>
+        <SelectedOperators />
+        <OperationNumberScope @number-change="handleNumberChange" />
     </v-row>
     <v-row class="mt-5">
       <v-col cols="12">
@@ -13,7 +12,7 @@
           <ActionField
             v-for="index in 10"
             :key="index"
-            operator="+"
+            operators="+"
             :max-number="maxNumber"
           />
         </v-form>
@@ -24,7 +23,6 @@
         </v-btn>
       </v-col>
     </v-row>
-  </v-container>
 </template>
 <script setup lang="ts">
 import ActionField from "~/components/home/ActionField.vue";
@@ -34,7 +32,6 @@ import OperationNumberScope from "~/components/home/OperationNumberScope.vue";
 const maxNumber = ref(10000)
 
 const handleNumberChange = (value: number) => {
-  console.log('value change', value)
   maxNumber.value = value
 }
 </script>

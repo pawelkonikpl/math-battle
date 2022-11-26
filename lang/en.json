@@ -2,6 +2,7 @@
   "VERIFY": "Verify",
   "HOME": {
     "SELECT_OPERATIONS": "Select operation",
+    "SELECT_RANGE": "Select a range"
   },
   "DEFAULT": {
     "HEADER": {

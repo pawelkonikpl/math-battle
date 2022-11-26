@@ -7,6 +7,8 @@
     density="comfortable"
     :counter="false"
     hide-details
+    inputmode="numeric"
+    pattern="[0-9]*"
   />
 </template>
 

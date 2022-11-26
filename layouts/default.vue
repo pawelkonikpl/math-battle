@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <ToolBar />
-    <slot />
+      <v-container>
+        <slot />
+      </v-container>
   </v-app>
 </template>
 <script setup>

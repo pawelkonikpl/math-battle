@@ -2,16 +2,16 @@
   <ClientOnly>
     <v-row class="action-field text-center align-center justify-center d-flex bg-amber-accent-2 rounded mb-6">
       <v-col cols="3">
-        <span class="text-h2">{{ aParam }}</span>
+        <span class="fs-4">{{ aParam }}</span>
       </v-col>
       <v-col cols="1">
-        <span class="text-h2">{{ props.operator }}</span>
+        <span class="fs-4">{{ props.operators }}</span>
       </v-col>
       <v-col cols="3">
-        <span class="text-h2">{{ bParam }}</span>
+        <span class="fs-4">{{ bParam }}</span>
       </v-col>
       <v-col cols="1">
-        <span class="text-h2">=</span>
+        <span class="fs-4">=</span>
       </v-col>
       <v-col cols="3">
         <TextField
@@ -34,12 +34,12 @@
   </ClientOnly>
 </template>
 <script setup lang="ts">
-import { computed, ref } from "#imports";
+import { computed, ref, defineProps } from "#imports";
 import { mdiCheckCircleOutline } from "@mdi/js";
 import TextField from "~/components/shared/TextField.vue";
 
 const accountIcon = mdiCheckCircleOutline;
-const props = defineProps<{ operator: string, maxNumber: number }>();
+const props = defineProps<{ operators: string, maxNumber: number }>();
 const maxNumber = ref(props.maxNumber)
 const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
@@ -107,12 +107,12 @@ const operations: Record<string, Operation> = {
 let result = null
 // watch works directly on a ref
 watch(() => props.maxNumber, async (newValue) => {
-  let { a, b, result: res } = operations[props.operator](newValue)
+  let { a, b, result: res } = operations[props.operators](newValue)
   aParam.value = a
   bParam.value = b
   result = res
 })
-let { a, b, result: resBase } = operations[props.operator](maxNumber.value)
+let { a, b, result: resBase } = operations[props.operators](maxNumber.value)
 aParam.value = a
 bParam.value = b
 result = resBase
@@ -122,7 +122,4 @@ const validateResult = () => {
 };
 </script>
 <style scoped>
-span {
-  font-family: 'Patrick Hand', cursive !important;
-}
 </style>

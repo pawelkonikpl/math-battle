@@ -111,7 +111,6 @@ watch(() => props.maxNumber, async (newValue) => {
   aParam.value = a
   bParam.value = b
   result = res
-  console.log("asdasd", a, b, result)
 })
 let { a, b, result: resBase } = operations[props.operator](maxNumber.value)
 aParam.value = a

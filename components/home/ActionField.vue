@@ -103,9 +103,20 @@ const operations: Record<string, Operation> = {
   "*": multiplicationOperation,
   ":": divisionOperation,
 }
-const { a, b, result } = operations[props.operator](maxNumber.value)
+
+let result = null
+// watch works directly on a ref
+watch(() => props.maxNumber, async (newValue) => {
+  let { a, b, result: res } = operations[props.operator](newValue)
+  aParam.value = a
+  bParam.value = b
+  result = res
+  console.log("asdasd", a, b, result)
+})
+let { a, b, result: resBase } = operations[props.operator](maxNumber.value)
 aParam.value = a
 bParam.value = b
+result = resBase
 
 const validateResult = () => {
   return Number(model.value) === result;

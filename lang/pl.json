@@ -1,5 +1,8 @@
 {
   "VERIFY": "Sprawdź",
+  "HOME": {
+    "SELECT_OPERATIONS": "Wybierz operacje",
+  },
   "DEFAULT": {
     "HEADER": {
       "TITLE": "Math battle"

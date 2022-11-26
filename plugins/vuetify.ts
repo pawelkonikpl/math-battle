@@ -3,6 +3,7 @@ import { createVuetify, ThemeDefinition } from "vuetify";
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+import 'vuetify/styles'
 
 const customLightTheme: ThemeDefinition = {
   colors: {
@@ -21,6 +22,7 @@ const customLightTheme: ThemeDefinition = {
 
 export default defineNuxtPlugin(nuxtApp => {
   const vuetify = createVuetify({
+    ssr: true,
     icons: {
       defaultSet: 'mdi',
       aliases,

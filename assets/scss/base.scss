@@ -15,6 +15,10 @@ $body-font-family: 'Patrick Hand', cursive !important;
   font-weight: normal;
 }
 
+html {
+  font-family: $body-font-family !important;
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);

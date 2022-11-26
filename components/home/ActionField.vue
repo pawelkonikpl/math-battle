@@ -93,7 +93,6 @@ const divisionOperation = (maxNumber: number): OperationResult => {
     return divisionOperation(maxNumber)
   }
   const index = getRandomInt(dividers.length)
-  console.log(dividers, index)
   const b = dividers[index]
   return { a, b, result: a / b }
 }

@@ -1,21 +1,21 @@
 <template>
-  <v-toolbar density="compact" color="pink">
-    <v-app-bar-nav-icon/>
-
+  <v-toolbar
+    density="compact"
+    color="pink"
+  >
+    <v-app-bar-nav-icon />
     <v-toolbar-title>{{ $t("DEFAULT.HEADER.TITLE") }}</v-toolbar-title>
-
-    <v-spacer/>
-
+    <v-spacer />
     <v-btn icon>
-      <v-icon :icon="mdiMagnifyIcon"/>
+      <v-icon :icon="mdiMagnifyIcon" />
     </v-btn>
 
     <v-btn icon>
-      <v-icon :icon="mdiAccountIcon"/>
+      <v-icon :icon="mdiAccountIcon" />
     </v-btn>
 
     <v-btn icon>
-      <v-icon :icon="mdiDotsVerticalIcon"/>
+      <v-icon :icon="mdiDotsVerticalIcon" />
     </v-btn>
   </v-toolbar>
 </template>

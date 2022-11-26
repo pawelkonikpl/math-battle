@@ -45,8 +45,8 @@ const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
 };
 let res = ref(null);
-const aParam = ref(null);
-const bParam = ref(null);
+const aParam = ref<number>(0);
+const bParam = ref<number>(0);
 const model = computed({
   get() {
     return res.value;
@@ -92,17 +92,13 @@ const divisionOperation = (maxNumber: number): OperationResult => {
   if(!dividers.length) {
     return divisionOperation(maxNumber)
   }
-  const index = getRandomInt(dividers.length -1)
+  const index = getRandomInt(dividers.length)
   console.log(dividers, index)
   const b = dividers[index]
-  // while (a % b !== 0 || a === b) {
-  //   a = getRandomInt(maxNumber);
-  //   b = getRandomInt(maxNumber - a)
-  // }
   return { a, b, result: a / b }
 }
-
-const operations: Record<string, any> = {
+type Operation = (maxNumber: number) => OperationResult;
+const operations: Record<string, Operation> = {
   "+": additionOperation,
   "-": subtractionOperation,
   "*": multiplicationOperation,

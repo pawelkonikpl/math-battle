@@ -2,7 +2,6 @@
 import eslintPlugin from "vite-plugin-eslint";
 import path from "path";
 import vuetify from "vite-plugin-vuetify";
-import vue from '@vitejs/plugin-vue'
 
 export default defineNuxtConfig({
   app: {
@@ -15,17 +14,21 @@ export default defineNuxtConfig({
       ],
     }
   },
-
+  components: [
+    "~/components", // default level is 0
+  ],
   pages: true,
-  css: ["vuetify/lib/styles/main.sass","~/assets/scss/settings.scss",  "~/assets/scss/base.scss", ],
+  css: ["vuetify/lib/styles/main.sass", "~/assets/scss/settings.scss", "~/assets/scss/base.scss",],
   build: {
     transpile: ["vuetify"]
   },
   modules: [
     async (_, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', config => (config?.plugins as any).push(vuetify()));
+      // eslint-disable-next-line
+      nuxt.hooks.hook("vite:extendConfig", config => (config?.plugins as any).push(vuetify()));
     },
     "@nuxtjs/i18n",
+    "@pinia/nuxt",
   ],
   i18n: {
     locales: [
@@ -54,7 +57,7 @@ export default defineNuxtConfig({
   vite: {
     ssr: {
       noExternal: [
-        'vuetify',
+        "vuetify",
       ],
     },
     define: {
@@ -62,7 +65,7 @@ export default defineNuxtConfig({
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './components')
+        "@": path.resolve(__dirname, "./components"),
       },
     },
     plugins: [

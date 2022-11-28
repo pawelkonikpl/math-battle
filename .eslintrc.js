@@ -18,5 +18,7 @@ module.exports = {
   plugins: [ "@typescript-eslint" ],
   rules: {
     "vue/multi-word-component-names": "off",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"]
   }
 };

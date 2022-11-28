@@ -23,9 +23,9 @@
 <script setup lang="ts">
 import { mdiAccountCircle, mdiDotsVertical, mdiMagnify } from "@mdi/js";
 
-const mdiDotsVerticalIcon = mdiDotsVertical
-const mdiMagnifyIcon = mdiMagnify
-const mdiAccountIcon = mdiAccountCircle
+const mdiDotsVerticalIcon = mdiDotsVertical;
+const mdiMagnifyIcon = mdiMagnify;
+const mdiAccountIcon = mdiAccountCircle;
 </script>
 
 <style scoped lang="scss">

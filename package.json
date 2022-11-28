@@ -7,7 +7,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs ",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --fix --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --fix --ignore-path .gitignore",
+    "lint:all": "yarn lint:js && yarn lint:style"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.42.1",
@@ -24,6 +27,7 @@
   "dependencies": {
     "@mdi/js": "^7.0.96",
     "@nuxtjs/i18n": "^8.0.0-beta.4",
+    "@pinia/nuxt": "^0.4.6",
     "vite-plugin-vuetify": "^1.0.0",
     "vuetify": "^3.0.1"
   }

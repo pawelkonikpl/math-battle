@@ -2,6 +2,7 @@
   "VERIFY": "Verify",
   "HOME": {
     "SELECT_OPERATIONS": "Select operation",
+    "START_GAME": "Start game",
     "SELECT_RANGE": "Select a range"
   },
   "DEFAULT": {

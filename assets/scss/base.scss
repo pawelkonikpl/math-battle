@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 $font-family: 'Patrick Hand';
 $body-font-family: $font-family;
 $title-font: $font-family;
@@ -39,6 +40,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none !important;
 }
 
 .text-h2 {

@@ -34,13 +34,13 @@
   </ClientOnly>
 </template>
 <script setup lang="ts">
-import { computed, ref, defineProps } from "#imports";
+import { computed, ref } from "#imports";
 import { mdiCheckCircleOutline } from "@mdi/js";
 import TextField from "~/components/shared/TextField.vue";
-
+import { Operator, useGameStore } from "~/store/game";
+const gameStore = useGameStore();
 const accountIcon = mdiCheckCircleOutline;
-const props = defineProps<{ operators: string, maxNumber: number }>();
-const maxNumber = ref(props.maxNumber)
+const props = defineProps<{ operators: Operator }>();
 const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
 };
@@ -70,52 +70,52 @@ const divider = (number: number): number[] => {
     }
   }
   return dividers;
-}
+};
 const additionOperation = (maxNumber: number): OperationResult => {
-  const a = getRandomInt(maxNumber)
-  const b = getRandomInt(maxNumber - a + 1)
-  return { a, b, result: a + b }
-}
+  const a = getRandomInt(maxNumber);
+  const b = getRandomInt(maxNumber - a + 1);
+  return { a, b, result: a + b };
+};
 const subtractionOperation = (maxNumber: number): OperationResult => {
-  const a = getRandomInt(maxNumber)
-  const b = getRandomInt(maxNumber - a + 1)
-  return { a, b, result: a - b }
-}
+  const a = getRandomInt(maxNumber);
+  const b = getRandomInt(maxNumber - a + 1);
+  return { a, b, result: a - b };
+};
 const multiplicationOperation = (maxNumber: number): OperationResult => {
-  const a = getRandomInt(maxNumber)
-  const b = getRandomInt(maxNumber - a + 1)
-  return { a, b, result: a * b }
-}
+  const a = getRandomInt(maxNumber);
+  const b = getRandomInt(maxNumber - a + 1);
+  return { a, b, result: a * b };
+};
 const divisionOperation = (maxNumber: number): OperationResult => {
   let a = getRandomInt(maxNumber);
-  const dividers = divider(a)
+  const dividers = divider(a);
   if(!dividers.length) {
-    return divisionOperation(maxNumber)
+    return divisionOperation(maxNumber);
   }
-  const index = getRandomInt(dividers.length)
-  const b = dividers[index]
-  return { a, b, result: a / b }
-}
+  const index = getRandomInt(dividers.length);
+  const b = dividers[index];
+  return { a, b, result: a / b };
+};
 type Operation = (maxNumber: number) => OperationResult;
-const operations: Record<string, Operation> = {
+const operations: Record<Operator, Operation> = {
   "+": additionOperation,
   "-": subtractionOperation,
   "*": multiplicationOperation,
   ":": divisionOperation,
-}
+};
 
-let result = null
+let result: number;
 // watch works directly on a ref
-watch(() => props.maxNumber, async (newValue) => {
-  let { a, b, result: res } = operations[props.operators](newValue)
-  aParam.value = a
-  bParam.value = b
-  result = res
-})
-let { a, b, result: resBase } = operations[props.operators](maxNumber.value)
-aParam.value = a
-bParam.value = b
-result = resBase
+watch(() => gameStore.maxNumber, async (newValue) => {
+  let { a, b, result: res } = operations[props.operators](newValue);
+  aParam.value = a;
+  bParam.value = b;
+  result = res;
+});
+let { a, b, result: resBase } = operations[props.operators](gameStore.maxNumber);
+aParam.value = a;
+bParam.value = b;
+result = resBase;
 
 const validateResult = () => {
   return Number(model.value) === result;

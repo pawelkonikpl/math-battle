@@ -1,22 +1,24 @@
 <template>
-  <div>
+  <v-col cols="6">
     <v-text-field
+      v-model="value"
       :label="$t('HOME.SELECT_RANGE')"
       type="number"
-      v-model="value"
-      @change="handelChange"
       variant="solo"
       single-line
+      @change="handelChange"
     />
-  </div>
+  </v-col>
 </template>
 
 <script setup lang="ts">
-const value = ref(null)
-const emit = defineEmits(['numberChange'])
+import { useGameStore } from "~/store/game";
+
+const value = ref(null);
+const gameStore = useGameStore();
 const handelChange = () => {
-  emit('numberChange', Number(value.value))
-}
+  gameStore.updateMaxNumber(Number(value.value));
+};
 </script>
 
 <style scoped lang="scss">

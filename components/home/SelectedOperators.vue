@@ -2,10 +2,10 @@
   <v-col
     cols="12"
   >
-    <span class="fs-4">{{ $t("HOME.SELECT_OPERATIONS") }}:</span>
+    <span class="fs-4 text-grey">{{ $t("HOME.SELECT_OPERATIONS") }}:</span>
     <v-col
       cols="6"
-      class="bg-pink rounded flex-row d-flex align-center justify-center "
+      class="bg-pink elevation-4 rounded flex-row d-flex align-center justify-center "
     >
       <v-checkbox
         v-for="operator in gameStore.getAvailableOperations"

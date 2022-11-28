@@ -14,7 +14,7 @@ $text-font: $font-family;
 
 
 :root {
-  --color-text: rgb(79, 79, 79);
+  --color-text: rgb(255, 0, 0);
   --color-background: #08a3b7;
 }
 
@@ -33,7 +33,6 @@ html {
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: $font-family;
@@ -45,6 +44,7 @@ body {
 a {
   text-decoration: none !important;
 }
+
 
 .text-h2 {
   font-family: $font-family !important;

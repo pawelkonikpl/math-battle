@@ -6,6 +6,7 @@
       type="number"
       variant="solo"
       single-line
+      :rules="[ v => !!v || 'To pole jest wymagane']"
       @change="handelChange"
     />
   </v-col>
@@ -13,7 +14,6 @@
 
 <script setup lang="ts">
 import { useGameStore } from "~/store/game";
-
 const value = ref(null);
 const gameStore = useGameStore();
 const handelChange = () => {

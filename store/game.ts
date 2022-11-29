@@ -17,6 +17,12 @@ export const useGameStore = defineStore("game", {
   },
   getters: {
     getAvailableOperations: (state) => state.availableOperations,
+    getSelectedOperations: (state) => {
+      if(!state.selectedOperations.length) {
+        return state.availableOperations;
+      }
+      return state.selectedOperations;
+    },
   },
   actions: {
     updateSelectedOperators(operation: Operator[]) {

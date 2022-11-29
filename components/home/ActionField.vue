@@ -5,7 +5,7 @@
         <span class="fs-4">{{ aParam }}</span>
       </v-col>
       <v-col cols="1">
-        <span class="fs-4">{{ props.operators }}</span>
+        <span class="fs-4">{{ operator }}</span>
       </v-col>
       <v-col cols="3">
         <span class="fs-4">{{ bParam }}</span>
@@ -34,13 +34,12 @@
   </ClientOnly>
 </template>
 <script setup lang="ts">
-import { computed, ref } from "#imports";
+import { computed, ref, watch } from "#imports";
 import { mdiCheckCircleOutline } from "@mdi/js";
 import TextField from "~/components/shared/TextField.vue";
-import { Operator, useGameStore } from "~/store/game";
-const gameStore = useGameStore();
+import { Operator } from "~/store/game";
 const accountIcon = mdiCheckCircleOutline;
-const props = defineProps<{ operators: Operator }>();
+const props = defineProps<{ operators: Operator[], maxNumber: number }>();
 const getRandomInt = (max: number): number => {
   return Math.floor(Math.random() * max);
 };
@@ -103,16 +102,23 @@ const operations: Record<Operator, Operation> = {
   "*": multiplicationOperation,
   ":": divisionOperation,
 };
-
+const randomOperator = (): Operator => {
+  const operatorsLength = props.operators.length;
+  const index = getRandomInt(operatorsLength);
+  return props.operators[index];
+};
+const operator = ref(randomOperator());
+console.log("OPERATOR", operator.value);
 let result: number;
 // watch works directly on a ref
-watch(() => gameStore.maxNumber, async (newValue) => {
-  let { a, b, result: res } = operations[props.operators](newValue);
+watch(() => props.maxNumber, async (newValue) => {
+  let { a, b, result: res } = operations[operator.value](newValue);
   aParam.value = a;
   bParam.value = b;
   result = res;
 });
-let { a, b, result: resBase } = operations[props.operators](gameStore.maxNumber);
+
+let { a, b, result: resBase } = operations[operator.value](props.maxNumber);
 aParam.value = a;
 bParam.value = b;
 result = resBase;

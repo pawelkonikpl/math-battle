@@ -82,7 +82,14 @@ const subtractionOperation = (maxNumber: number): OperationResult => {
 };
 const multiplicationOperation = (maxNumber: number): OperationResult => {
   const a = getRandomInt(maxNumber);
-  const b = getRandomInt(maxNumber - a + 1);
+  const bNumber = Math.floor(maxNumber / a);
+  const isInfinity = bNumber === Infinity;
+  if (isInfinity) {
+    return multiplicationOperation(maxNumber);
+  }
+  const b = getRandomInt(bNumber +1);
+  console.log("aaaaa", isInfinity, a, b);
+
   return { a, b, result: a * b };
 };
 const divisionOperation = (maxNumber: number): OperationResult => {
